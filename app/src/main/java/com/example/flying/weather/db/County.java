@@ -1,5 +1,7 @@
 package com.example.flying.weather.db;
 
+import com.google.gson.annotations.SerializedName;
+
 import org.litepal.crud.DataSupport;
 
 /**
@@ -10,9 +12,9 @@ public class County extends DataSupport {
 
     private int id;
 
-    private String countyName;
+    private @SerializedName("name") String countyName;
 
-    private String weatherId;
+    private @SerializedName("weather_id") String weatherId;
 
     private int cityId;
 

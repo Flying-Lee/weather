@@ -26,10 +26,8 @@ public class Utillity {
             try {
                 List<Province> provinces = JsonUtil.jsonToArrayList(response, Province.class);
 
-                Log.e("Utillty", provinces.toString());
-
                 for (Province province : provinces) {
-
+                    province.setProvinceCode(province.getId());
                     province.save();
 
                 }
@@ -51,9 +49,13 @@ public class Utillity {
             try {
                 List<City> cities = JsonUtil.jsonToArrayList(response, City.class);
 
-                Log.e("Utillty", cities.toString());
+                for (City city : cities) {
+                    city.setCityCode(city.getId());
+                    city.setProvinceId(provinceId);
+                    city.save();
+                }
 
-//            city.save();
+                Log.e("Utillty", cities.toString());
 
                 return true;
 
@@ -73,12 +75,21 @@ public class Utillity {
     public  static boolean handleCountyResponse(String response, int cityId) {
 
         if (!TextUtils.isEmpty(response)) {
+            try {
+                List<County> counties = JsonUtil.jsonToArrayList(response, County.class);
 
-//            County county = JsonUtil.parseJson(response, County.class);
+                for (County county : counties) {
+                    county.setCityId(cityId);
+                    county.save();
+                }
 
-//            county.save();
+                Log.e("Utillty", counties.toString());
 
-            return true;
+                return true;
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
 
         return false;

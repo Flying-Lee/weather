@@ -367,16 +367,20 @@ public class ChooseAreaFragment extends Fragment {
 
     private void queryFromServer(String address, final String type) {
 
+        showProgressDialog();
+
         HttpUtil.sendRequest(address, new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
+
+                Log.e("choose queryFromServer", e.toString());
 
                 // 通过 runOnUiThread() 方法回到主线程处理逻辑
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
                         // 关闭等待
-
+                         closeProgressDialog();
                          Toast.makeText(getContext(), "加载失败", Toast.LENGTH_SHORT).show();
                     }
                 });
@@ -403,6 +407,7 @@ public class ChooseAreaFragment extends Fragment {
                         @Override
                         public void run() {
 
+                            closeProgressDialog();
                             if (type.equals("province")) {
                                 queryProvinces();
                             } else if (type.equals("city")) {
@@ -419,6 +424,22 @@ public class ChooseAreaFragment extends Fragment {
             }
         });
 
+    }
+
+    private void showProgressDialog() {
+        if (progressDialog == null) {
+            progressDialog = new ProgressDialog(getActivity());
+            progressDialog.setMessage("正在加载...");
+            progressDialog.setCanceledOnTouchOutside(false);
+        }
+        progressDialog.show();
+    }
+
+
+    private void closeProgressDialog() {
+        if (progressDialog != null) {
+            progressDialog.dismiss();
+        }
     }
 
 }
