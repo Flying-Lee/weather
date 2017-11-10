@@ -16,8 +16,6 @@ public class County extends DataSupport {
 
     private int cityId;
 
-    private int provinceCode;
-
     public int getId() {
         return id;
     }
@@ -50,14 +48,6 @@ public class County extends DataSupport {
         this.cityId = cityId;
     }
 
-    public int getProvinceCode() {
-        return provinceCode;
-    }
-
-    public void setProvinceCode(int provinceCode) {
-        this.provinceCode = provinceCode;
-    }
-
     @Override
     public String toString() {
         return "County{" +
@@ -65,7 +55,6 @@ public class County extends DataSupport {
                 ", countyName='" + countyName + '\'' +
                 ", weatherId='" + weatherId + '\'' +
                 ", cityId=" + cityId +
-                ", provinceCode=" + provinceCode +
                 '}';
     }
 }
