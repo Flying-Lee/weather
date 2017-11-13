@@ -10,5 +10,6 @@ public class UrlConst {
     public static final String WEATHER_BASE_URL = "http://guolin.tech/api/";
     public static final String PROVINCE_URL = WEATHER_BASE_URL + "china/";
     public static final String WEATHER_URL = WEATHER_BASE_URL + "weather?cityid=";
+    public static final String BING_URL = "http://guolin.tech/api/bing_pic";
 
 }
