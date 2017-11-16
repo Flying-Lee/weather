@@ -201,20 +201,20 @@ public class WeatherActivity extends AppCompatActivity {
         forecastLayout.removeAllViews();
         for (Forcast forecast : weather.forcastList) {
             View view = LayoutInflater.from(this).inflate(R.layout.forecast_item, forecastLayout, false);
-            TextView dateText = (TextView) view.findViewById(R.id.date_text);
-            TextView infoText = (TextView) view.findViewById(R.id.info_text);
-            TextView maxText = (TextView) view.findViewById(R.id.max_text);
-            TextView minText = (TextView) view.findViewById(R.id.min_text);
-            dateText.setText(forecast.date);
-            infoText.setText(forecast.more.info);
-            maxText.setText(forecast.temperature.max);
-            minText.setText(forecast.temperature.min);
-            forecastLayout.addView(view);
-        }
+        TextView dateText = (TextView) view.findViewById(R.id.date_text);
+        TextView infoText = (TextView) view.findViewById(R.id.info_text);
+        TextView maxText = (TextView) view.findViewById(R.id.max_text);
+        TextView minText = (TextView) view.findViewById(R.id.min_text);
+        dateText.setText(forecast.date);
+        infoText.setText(forecast.more.info);
+        maxText.setText(forecast.temperature.max);
+        minText.setText(forecast.temperature.min);
+        forecastLayout.addView(view);
+    }
         if (weather.aqi != null) {
-            aqiText.setText(weather.aqi.city.aqi);
-            pm25Text.setText(weather.aqi.city.pm25);
-        }
+        aqiText.setText(weather.aqi.city.aqi);
+        pm25Text.setText(weather.aqi.city.pm25);
+    }
         String comfort = "舒适度：" + weather.suggestion.comfort.info;
         String carWash = "洗车指数：" + weather.suggestion.carWash.info;
         String sport = "运行建议：" + weather.suggestion.sport.info;
